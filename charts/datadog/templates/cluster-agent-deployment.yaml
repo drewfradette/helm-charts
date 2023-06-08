@@ -161,7 +161,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: {{ template "datadog.apiSecretName" . }}
-                key: api-key
+                key: {{ .Values.datadog.existingSecretKeyNames.apiKey | quote }}
                 optional: true
           {{- include "components-common-env" . | nindent 10 }}
           {{- if .Values.clusterAgent.metricsProvider.enabled }}
@@ -169,7 +169,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: {{ template "datadog.appKeySecretName" . }}
-                key: app-key
+                key: {{ .Values.datadog.existingSecretKeyNames.appKey | quote }}
           - name: DD_EXTERNAL_METRICS_PROVIDER_ENABLED
             value: {{ .Values.clusterAgent.metricsProvider.enabled | quote }}
           - name: DD_EXTERNAL_METRICS_PROVIDER_PORT

@@ -48,6 +48,10 @@ datadog:
   ## If set, this parameter takes precedence over "appKey".
   appKeyExistingSecret:  # <DATADOG_APP_KEY_SECRET>
 
+  existingSecretKeyNames:
+    apiKeyName: api-key
+    appKeyname: app-key
+
   # agents.secretAnnotations -- Annotations to add to the Secrets
   secretAnnotations: {}
   #   key: "value"

@@ -8,7 +8,7 @@
   valueFrom:
     secretKeyRef:
       name: {{ template "datadog.apiSecretName" . }}
-      key: api-key
+      key: {{ .Values.datadog.existingSecretKeyNames.apiKey | quote }}
 {{- if .Values.datadog.remoteConfiguration.enabled }}
 - name: DD_REMOTE_CONFIGURATION_ENABLED
   value: "true"
